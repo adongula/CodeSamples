@@ -6,3 +6,4 @@ print(user)
 
 new_user = os.environ.get('CISCOUSER')
 print(new_user)
+#test
