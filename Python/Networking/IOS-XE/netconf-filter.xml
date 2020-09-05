@@ -1,10 +1,10 @@
 <filter>
-  <interfaces ns="urn:ietf:params::ns:yang:ietf-interfaces">
+  <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
     <interface>
       <name>GigabitEthernet2</name>
     </interface>
   </interfaces>
-  <interfaces-state ns="urn:ietf:params::ns:yang:ietf-interfaces">
+  <interfaces-state xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
     <interface>
       <name>GigabitEthernet2</name>
     </interface>
