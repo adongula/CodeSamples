@@ -8,12 +8,12 @@ netconf_filter = '''
 <filter>
     <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
         <interface>
-            <name>GigabitEthernet1</name>
+            <name>GigabitEthernet2</name>
         </interface>
     </interfaces>
     <interfaces-state xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
         <interface>
-            <name>GigabitEthernet1</name>
+            <name>GigabitEthernet2</name>
         </interface>
     </interfaces-state>
 </filter>'''
@@ -30,14 +30,18 @@ interface_python = xmltodict.parse(interface_netconf.xml)[
 
 interface_name = interface_python['interfaces']['interface']['name']['#text']
 interface_desc = interface_python['interfaces']['interface']['description']
-interface_ip = interface_python['interfaces']['interface']['ipv4']['address']['ip']
-interface_netmask = interface_python['interfaces']['interface']['ipv4']['address']['netmask']
+
+# If IP Address is not available, you will get an exception
+
+# interface_ip = interface_python['interfaces']['interface']['ipv4']['address']['ip']
+# interface_netmask = interface_python['interfaces']['interface']['ipv4']['address']['netmask']
 interface_op_status = interface_python['interfaces-state']['interface']['oper-status']
 
 print(f'Interface: {interface_name}')
 print(f'Description: {interface_desc}')
-print(f'IP Address: {interface_ip}, Mask: {interface_netmask}')
+# print(f'IP Address: {interface_ip}, Mask: {interface_netmask}')
 print(f'Status: {interface_op_status}')
+
 
 
 
