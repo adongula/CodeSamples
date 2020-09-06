@@ -1,6 +1,7 @@
 from ncclient import manager
 from pprint import pprint
 import xmltodict
+import xml.dom.minidom
 
 # import logging
 # logging.basicConfig(level=logging.DEBUG)
@@ -39,9 +40,9 @@ with manager.connect(host=router["host"], port=router["port"], username=router["
 
 # XMLDOM for formatting output to xml
 # -----UNCOMMENT BELOW
-# xmlDom = xml.dom.minidom.parseString(str(interface_netconf))
-# print(xmlDom.toprettyxml(indent="  "))
-# print('*' * 25 + 'Break' + '*' * 50)
+xmlDom = xml.dom.minidom.parseString(str(interface_netconf))
+print(xmlDom.toprettyxml(indent="  "))
+print('*' * 25 + 'Break' + '*' * 50)
 # -----UNCOMMENT ABOVE
 
 # XMLTODICT for converting xml output to a python dictionary
