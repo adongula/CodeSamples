@@ -1,13 +1,15 @@
+# This Code sets the Interface Descriptions based on CDP Neighbors output
+
 import requests
 import json
 import re
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-switchuser = 'cisco'
-switchpassword = 'cisco'
+switchuser = 'admin'
+switchpassword = 'Cisco123'
 
-url = 'https://172.16.1.68/ins'
+url = 'https://10.10.20.58/ins'
 myheaders = {'content-type': 'application/json'}
 payload = {
     "ins_api": {
@@ -29,7 +31,7 @@ nei_count = response['ins_api']['outputs']['output']['body']['neigh_count']
 counter = 0
 
 # LOGIN AND SET COOKIE
-auth_url = 'https://172.16.1.68/api/mo/aaaLogin.json'
+auth_url = 'https://10.10.20.58/api/mo/aaaLogin.json'
 auth_body = {"aaaUser": {"attributes": {
     "name": switchuser, "pwd": switchpassword}}}
 auth_response = requests.post(
@@ -63,7 +65,7 @@ while counter < nei_count:
         int_name = str.lower(str(local_int[:3]))
         int_num = re.search(r'[1-9]/[1-9]*', local_int)
         # print(int_name+str(int_num.group(0)))
-        int_url = 'https://172.16.1.68/api/mo/sys/intf/phys-['+int_name+str(
+        int_url = 'https://10.10.20.58/api/mo/sys/intf/phys-['+int_name+str(
             int_num.group(0))+'].json'
         post_response = requests.post(int_url, data=json.dumps(
             body), headers=headers, cookies=cookies, verify=False).json()
