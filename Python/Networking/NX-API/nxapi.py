@@ -1,9 +1,9 @@
 import requests
 import json
 
-url = "https://sbx-nxos-mgmt.cisco.com/ins"
+url = "https://10.10.20.58/ins"
 switchuser = "admin"
-switchpassword = "Admin_1234!"
+switchpassword = "Cisco123"
 
 myheaders = {"content-type": "application/json"}
 payload = {
