@@ -13,7 +13,7 @@ response = requests.get(url, headers=headers).json()
 #print(json.dumps(response, indent=2, sort_keys=True))
 
 for response_org in response:
-    if response_org['name'] == 'Knoxs Data':
+    if response_org['name'] == 'DevNet Sandbox':
         orgId = response_org['id']
 
 net_url = f'{url}/{orgId}/networks'
@@ -21,7 +21,7 @@ net_url = f'{url}/{orgId}/networks'
 networks = requests.get(net_url, headers=headers).json()
 # print(networks)
 for network in networks:
-    if network['name'] == 'SoHo':
+    if network['name'] == 'DNSMB3-axxxxxagmail.com':
         netId = network['id']
 
 

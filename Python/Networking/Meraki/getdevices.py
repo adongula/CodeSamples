@@ -19,7 +19,7 @@ net_url = f'{url}/{orgId}/networks'
 
 networks = requests.get(net_url, headers=headers).json()
 for network in networks:
-    if network['name'] == 'DNSMB2':
+    if network['name'] == 'DNSMB3-axxxxxagmail.com':
         netId = network['id']
 
 dev_url = f'https://dashboard.meraki.com/api/v0/networks/{netId}/devices'

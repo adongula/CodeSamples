@@ -28,7 +28,7 @@ pprint(networks)
 
 # Set NetworkId
 for network in networks:
-    if network['name'] == "DevNet Always On Read Only":
+    if network['name'] == "DNSMB3-axxxxxagmail.com":
         netId = network['id']
 # print(netId)
 

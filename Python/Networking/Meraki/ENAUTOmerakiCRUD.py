@@ -16,7 +16,7 @@ try:
     if response.status_code == 200:
         orgs = response.json()
         for org in orgs:
-            if org['name'] == 'Knoxs Data':
+            if org['name'] == 'DNSMB3-axxxxxagmail.com':
                 orgid = org['id']
 except Exception as ex:
     print(ex)

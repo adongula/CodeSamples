@@ -20,7 +20,7 @@ net_url = f'{url}/{orgId}/networks'
 networks = requests.get(net_url, headers=headers).json()
 # print(networks)
 for network in networks:
-    if network['name'] == 'DNSMB4-s.jayaraj007007@gmail.com':
+    if network['name'] == 'DNSMB3-axxxxxagmail.com':
         netId = network['id']
 
 client_url = f'https://dashboard.meraki.com/api/v0/networks/{netId}/clients'

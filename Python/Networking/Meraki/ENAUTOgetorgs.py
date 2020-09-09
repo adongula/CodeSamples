@@ -27,7 +27,7 @@ try:
     if response.status_code == 200:
         nets = response.json()
         for net in nets:
-            if net['name'] == 'DNSMB3-Szywalski@tcc.de':
+            if net['name'] == 'DNSMB3-axxxxxagmail.com':
                 netid = net['id']
 except HTTPError as http:
     print(http)
