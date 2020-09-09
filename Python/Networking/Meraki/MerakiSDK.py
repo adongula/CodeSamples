@@ -1,19 +1,17 @@
-from meraki_sdk.meraki_sdk_client import MerakiSdkClient
+import meraki
 import json
 from pprint import pprint
 # import logging
 # logging.basicConfig(level=logging.DEBUG)
 
-
 # CREATE Connection Object
 x_cisco_meraki_api_key = '9103a4d27fc670d50f63f9d6047c0de121f475f1'  # Demo DevNet Sandbox
-meraki = MerakiSdkClient(x_cisco_meraki_api_key)
+dashboard = meraki.DashboardAPI(api_key=(x_cisco_meraki_api_key))
 
 # Get Orgs
-orgs = meraki.organizations.get_organizations()
-# print(json.dumps(orgs, indent=2, sort_keys=True))
+orgs = dashboard.organizations.getOrganizations()
+print(json.dumps(orgs, indent=2, sort_keys=True))
 # pprint(orgs)
-
 
 # Set OrgId
 for org in orgs:
@@ -21,33 +19,23 @@ for org in orgs:
         orgId = org['id']
 
 # Get Networks in Org
-params = {}
-params['organization_id'] = orgId
-networks = meraki.networks.get_organization_networks(params)
-pprint(networks)
+networks = dashboard.organizations.getOrganizationNetworks(orgId)
 
 # Set NetworkId
 for network in networks:
     if network['name'] == "DNSMB3-axxxxxagmail.com":
         netId = network['id']
-# print(netId)
 
 # GET VLANS
-vlans = meraki.vlans.get_network_vlans(netId)
+vlans = dashboard.appliance.getNetworkApplianceVlans(netId)
 
+# EXTRACTING THE VLAN TO BE UPDATED IN A SEPERATE DICTIONARY
+vlan = vlans[1]
 
-vlan = vlans[0]
-# CHANGE VLAN NAME HERE
-vlan['name'] = 'Default'
-
-
-updatedVlan = {}
-updatedVlan['network_id'] = netId
-updatedVlan['vlan_id'] = vlan['id']
-updatedVlan['update_network_vlan'] = vlan
-# pprint(updatedVlan)
-result = meraki.vlans.update_network_vlan(updatedVlan)
+# UPDATING THE VLAN NAME TO 'Default'
+result = dashboard.appliance.updateNetworkApplianceVlan(
+    networkId=vlan['networkId'], vlanId=vlan['id'], name='Default')
 
 # VERIFY
-vlans = meraki.vlans.get_network_vlans(netId)
+vlans = dashboard.appliance.getNetworkApplianceVlans(netId)
 pprint(vlans)
