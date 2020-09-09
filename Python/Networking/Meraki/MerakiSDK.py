@@ -6,7 +6,7 @@ from pprint import pprint
 
 
 # CREATE Connection Object
-x_cisco_meraki_api_key = '6bec40cf957de430a6f1f2baa056b99a4fac9ea0'  # Demo DevNet Sandbox
+x_cisco_meraki_api_key = '9103a4d27fc670d50f63f9d6047c0de121f475f1'  # Demo DevNet Sandbox
 meraki = MerakiSdkClient(x_cisco_meraki_api_key)
 
 # Get Orgs
