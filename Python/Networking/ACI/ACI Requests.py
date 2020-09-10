@@ -4,13 +4,13 @@ import json
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 ####### LOGIN ###########
-url = "https://sandboxapicdc.cisco.com:443/api/aaaLogin.json"
+url = "https://10.10.20.14:443/api/aaaLogin.json"
 
 payload = {
     "aaaUser": {
         "attributes": {
             "name": "admin",
-            "pwd": "ciscopsdt"
+            "pwd": "C1sco12345"
         }
     }
 }
@@ -31,7 +31,7 @@ cookie['APIC-cookie'] = token
 
 ######### GET APN ##############
 # GET APPLICATION PROFILE
-url = "https://sandboxapicdc.cisco.com:443/api/node/mo/uni/tn-Heroes/ap-Save_The_Planet.json"
+url = "https://10.10.20.14:443/api/node/mo/uni/tn-Heroes/ap-Save_The_Planet.json"
 
 headers = {
     'cache-control': "no-cache"
